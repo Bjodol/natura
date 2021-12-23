@@ -17,7 +17,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head />
-        <body className="min-h-screen bg-base-main text-base-main-contrast">
+        <body className="min-h-screen bg-[url('/MountainRiver.jpg')] bg-cover bg-no-repeat bg-base-main bg-blend-overlay text-base-main-contrast">
           <Main />
           <NextScript />
         </body>
