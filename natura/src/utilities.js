@@ -47,6 +47,10 @@ const getColorScheme = (
 const interactive = {
   minHeight: "44px",
   minWidth: "44px",
+  '&:focus-visible': {
+    boxShadow: "0 0 0 0px blue, 0 0 0 calc(3px + 0px) blue, 0 0 blue", 
+    outline: "none"
+  }
 };
 
 const getUtilties = (theme, config) => ({

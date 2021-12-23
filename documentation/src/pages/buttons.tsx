@@ -11,12 +11,14 @@ export default function Home() {
       </Head>
 
       <main className="bg-base-main text-base-main-contrast h-screen">
-        <button className="btn btn-transparent">Button</button>
-        <button className="btn btn-primary">Button</button>
-        <button className="btn btn-secondary">Button</button>
-        <button className="btn btn-base">Button</button>
-        <button className="btn btn-warning">Button</button>
-        <button className="btn btn-danger">Button</button>
+        <div className="grid gap-4 grid-cols-4 p-4">
+          <button className="btn btn-transparent">Button</button>
+          <button className="btn btn-primary">Button</button>
+          <button className="btn btn-secondary">Button</button>
+          <button className="btn btn-base">Button</button>
+          <button className="btn btn-warning">Button</button>
+          <button className="btn btn-danger">Button</button>
+        </div>
       </main>
 
       <footer></footer>
