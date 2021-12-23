@@ -1,0 +1,18 @@
+{
+  "name": "@bjodol/natura",
+  "version": "0.0.1",
+  "description": "Natura design system",
+  "main": "index.js",
+  "module": "index.js",
+  "files": [
+    "src/**/*.js",
+    "tailwind.config.js"
+  ],
+  "repository": "git@github.com:Bjodol/natura.git",
+  "author": "bjodol <bjorndolvik@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "tailwindcss": "^3.0.7"
+  }
+}

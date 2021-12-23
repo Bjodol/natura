@@ -1,0 +1,16 @@
+{
+  "name": "natura-project",
+  "version": "1.0.0",
+  "description": "Design system",
+  "repository": "git@github.com:Bjodol/natura.git",
+  "author": "bjodol <bjorndolvik@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "documentation",
+    "natura"
+  ],
+  "devDependencies": {
+    "prettier": "^2.5.1"
+  }
+}
