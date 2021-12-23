@@ -16,9 +16,17 @@ const getSpacing =
 
 const getColorScheme = (
   theme,
-  { defaultKey, contrastKey, hoverKey, focusKey, activeKey } = {
-    defaultKey: "DEFAULT",
-    contrastKey: "contrast",
+  {
+    backgroundKey,
+    colorKey,
+    textDecorationColor,
+    hoverKey,
+    focusKey,
+    activeKey,
+  } = {
+    backgroundKey: "DEFAULT",
+    colorKey: "contrast",
+    textDecorationColor: "active",
     hoverKey: "hover",
     focusKey: "focus",
     activeKey: "active",
@@ -27,10 +35,12 @@ const getColorScheme = (
   const getColor = (color, type = "") => {
     if (typeof color === "string") return { [type]: color };
     return Object.entries(color).reduce((acc, [key, value]) => {
-      if (key.includes(contrastKey))
+      if (key.includes(colorKey))
         return { ...acc, ...getColor(value, "color") };
-      if (key.includes(defaultKey))
+      if (key.includes(backgroundKey))
         return { ...acc, ...getColor(value, "backgroundColor") };
+      if (key.includes(textDecorationColor))
+        return { ...acc, ...getColor(value, "textDecorationColor") };
       if (key.includes(hoverKey))
         return { ...acc, [`&:hover`]: getColor(value, "backgroundColor") };
       if (key.includes(focusKey))
@@ -47,10 +57,10 @@ const getColorScheme = (
 const interactive = {
   minHeight: "44px",
   minWidth: "44px",
-  '&:focus-visible': {
-    boxShadow: "0 0 0 0px blue, 0 0 0 calc(3px + 0px) blue, 0 0 blue", 
-    outline: "none"
-  }
+  "&:focus-visible": {
+    boxShadow: "0 0 0 0px blue, 0 0 0 calc(3px + 0px) blue, 0 0 blue",
+    outline: "none",
+  },
 };
 
 const getUtilties = (theme, config) => ({

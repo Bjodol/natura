@@ -15,7 +15,10 @@ export default function Home() {
           <ul>
             <li>
               <Link href="/buttons">
-                <a>Buttons</a>
+                <a className="link">Buttons</a>
+              </Link>
+              <Link href="/links">
+                <a className="link">Links</a>
               </Link>
             </li>
           </ul>

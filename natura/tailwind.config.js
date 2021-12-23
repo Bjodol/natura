@@ -37,5 +37,5 @@ module.exports = {
     },
     extend: {},
   },
-  plugins: [require("./src/btn")],
+  plugins: [require("./src/btn"), require('./src/link')],
 };
