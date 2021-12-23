@@ -12,7 +12,7 @@ module.exports = plugin(
         ...colorScheme,
         display: "flex",
         alignItems: "center",
-        justifyContent: "center",
+        // justifyContent: "center",
         transition: "all .12s ease-in-out",
         textDecorationLine: "underline",
         textDecorationThickness: "3px",

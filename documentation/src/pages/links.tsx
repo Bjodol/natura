@@ -10,9 +10,9 @@ export default function Links() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="bg-base-main text-base-main-contrast h-screen">
+      <main className="bg-base-main text-base-main-contrast h-screen p-4">
         <h1 id="top">Links</h1>
-        <div className="grid gap-4 grid-cols-4 p-4">
+        <div className="flex space-x-4 flex-wrap">
           <a href="#top" className="link link-transparent">
             Link
           </a>
@@ -32,7 +32,7 @@ export default function Links() {
             Link
           </a>
         </div>
-        <div className="grid gap-4 grid-cols-4 p-4">
+        <div className="flex space-x-4 flex-wrap">
           <a href="#top" className="link link-transparent link-inline">
             Inline Link
           </a>
