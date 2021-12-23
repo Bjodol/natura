@@ -6,6 +6,9 @@
   "author": "bjodol <bjorndolvik@gmail.com>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "dev": "yarn workspace documentation dev"
+  },
   "workspaces": [
     "documentation",
     "natura"
