@@ -17,7 +17,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head />
-        <body>
+        <body className="min-h-screen bg-base-main text-base-main-contrast">
           <Main />
           <NextScript />
         </body>

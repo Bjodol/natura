@@ -35,7 +35,11 @@ module.exports = {
         contrast: "#060609",
       },
     },
-    extend: {},
+    extend: {
+      spacing: {
+        "fit-content": "fit-content",
+      },
+    },
   },
-  plugins: [require("./src/btn"), require('./src/link')],
+  plugins: [require("./src/btn"), require("./src/link")],
 };

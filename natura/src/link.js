@@ -10,9 +10,7 @@ module.exports = plugin(
       ".link": {
         ...interactive,
         ...colorScheme,
-        display: "flex",
-        alignItems: "center",
-        // justifyContent: "center",
+        display: "block",
         transition: "all .12s ease-in-out",
         textDecorationLine: "underline",
         textDecorationThickness: "3px",

@@ -11,19 +11,26 @@ export default function Home() {
       </Head>
       <header className="bg-base-main text-base-main-contrast border-b border-base-active">
         <nav>
+          <h2 className="pl-4 pt-4">Components</h2>
           <ul>
             <li>
               <Link href="/buttons">
-                <a className="link">Buttons</a>
+                <a className="link link-primary hover:scale-100 hover:pl-8">
+                  Buttons
+                </a>
               </Link>
+            </li>
+            <li>
               <Link href="/links">
-                <a className="link">Links</a>
+                <a className="link link-primary hover:scale-100 hover:pl-8">
+                  Links
+                </a>
               </Link>
             </li>
           </ul>
         </nav>
       </header>
-      <main className="bg-base-main text-base-main-contrast h-screen">
+      <main>
         <h1>Natura - Raw and clean</h1>
       </main>
 
