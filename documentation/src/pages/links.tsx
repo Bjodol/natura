@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import { COLOR_SCHEMES } from "../constants";
 
 export default function Links() {
   return (
@@ -10,51 +11,25 @@ export default function Links() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="bg-base-main text-base-main-contrast h-screen p-4">
-        <h1 id="top">Links</h1>
-        <div className="flex space-x-4 flex-wrap">
-          <a href="#top" className="link link-transparent">
-            Link
-          </a>
-          <a href="#top" className="link link-primary">
-            Link
-          </a>
-          <a href="#top" className="link link-secondary">
-            Link
-          </a>
-          <a href="#top" className="link link-base">
-            Link
-          </a>
-          <a href="#top" className="link link-warning">
-            Link
-          </a>
-          <a href="#top" className="link link-danger">
-            Link
-          </a>
-        </div>
-        <div className="flex space-x-4 flex-wrap">
-          <a href="#top" className="link link-transparent link-inline">
-            Inline Link
-          </a>
-          <a href="#top" className="link link-primary link-inline">
-            Inline Link
-          </a>
-          <a href="#top" className="link link-secondary link-inline">
-            Inline Link
-          </a>
-          <a href="#top" className="link link-base link-inline">
-            Inline Link
-          </a>
-          <a href="#top" className="link link-warning link-inline">
-            Inline Link
-          </a>
-          <a href="#top" className="link link-danger link-inline">
-            Inline Link
-          </a>
-        </div>
-      </main>
-
-      <footer></footer>
+      <h1 id="top">Links</h1>
+      <div className="flex space-x-4 flex-wrap">
+        {Object.values(COLOR_SCHEMES).map((color) => (
+          <a
+            href="#top"
+            key={color}
+            className={`link link-${color}`}
+          >{`link-${color}`}</a>
+        ))}
+      </div>
+      <div className="flex space-x-4 flex-wrap">
+        {Object.values(COLOR_SCHEMES).map((color) => (
+          <a
+            href="#top"
+            key={color}
+            className={`link link-${color} link-inline`}
+          >{`link-${color}`}</a>
+        ))}
+      </div>
     </div>
   );
 }

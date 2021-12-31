@@ -1,3 +1,5 @@
+const { merge } = require("lodash");
+
 const getBreakpoints = (theme) =>
   Object.entries(theme("screens")).reduce(
     (acc, [key, value]) => ({
@@ -42,9 +44,15 @@ const getColorScheme = (
       if (key.includes(textDecorationColor))
         return { ...acc, ...getColor(value, "textDecorationColor") };
       if (key.includes(hoverKey))
-        return { ...acc, [`&:hover`]: getColor(value, "backgroundColor") };
+        return {
+          ...acc,
+          [`&:hover, &:focus-visible`]: getColor(value, "backgroundColor"),
+        };
       if (key.includes(focusKey))
-        return { ...acc, [`&:focus`]: getColor(value, "backgroundColor") };
+        return {
+          ...acc,
+          [`&:focus, &:focus-visible`]: getColor(value, "backgroundColor"),
+        };
       if (key.includes(activeKey))
         return { ...acc, [`&:active`]: getColor(value, "backgroundColor") };
       return { ...acc, [`&-${key}`]: getColor(value, type) };
@@ -54,12 +62,38 @@ const getColorScheme = (
   return getColor(colors);
 };
 
+const getSetSpacingSizes = (theme) => (sizeKey) => {
+  const spacing = theme("spacing");
+
+  const sizing = Object.entries(spacing).reduce(
+    (acc, [key, val]) => ({
+      ...acc,
+      [`&-${key}`]: {
+        [sizeKey]: val,
+      },
+    }),
+    {}
+  );
+  return sizing;
+};
+
 const interactive = {
   minHeight: "44px",
   minWidth: "44px",
   "&:focus-visible": {
-    boxShadow: "0 0 0 0px blue, 0 0 0 calc(3px + 0px) blue, 0 0 blue",
+    boxShadow: `0 0 0 0px var(--interactive-focus-color, blue),
+      0 0 0 calc(3px + 0px) var(--interactive-focus-color, blue), 
+      0 0 var(--interactive-focus-color, blue)`,
     outline: "none",
+  },
+};
+
+const animations = {
+  "interaction-scale-up": {
+    transition: "all .12s ease-in-out",
+    "&:hover, &:focus": {
+      transform: "scale(1.1)",
+    },
   },
 };
 
@@ -67,7 +101,10 @@ const getUtilties = (theme, config) => ({
   spacing: getSpacing(theme),
   breakpoints: getBreakpoints(theme),
   colorScheme: getColorScheme(theme, config),
+  setSpacingSizes: getSetSpacingSizes(theme),
   interactive,
+  animations,
+  merge: (...args) => merge({}, ...args),
 });
 
 module.exports = getUtilties;

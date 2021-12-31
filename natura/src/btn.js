@@ -3,17 +3,19 @@ const getUtilties = require("./utilities");
 
 module.exports = plugin(
   ({ addUtilities, addComponents, e, prefix, config, theme }) => {
-    const { spacing, colorScheme, interactive } = getUtilties(theme);
+    const { spacing, colorScheme, interactive, animations, merge } =
+      getUtilties(theme);
     const component = {
-      ".btn": {
-        ...interactive,
-        ...colorScheme,
-        padding: spacing(4),
-        transition: "all .12s ease-in-out",
-        '--btn-corner': "16px",
-        "--btn-chip": "calc(var(--btn-corner) / 2)",
-        "--btn-clip-offset": "4px",
-        clipPath: `polygon(
+      ".btn": merge(
+        animations["interaction-scale-up"],
+        interactive,
+        colorScheme,
+        {
+          padding: spacing(4),
+          "--btn-corner": "16px",
+          "--btn-chip": "calc(var(--btn-corner) / 2)",
+          "--btn-clip-offset": "4px",
+          clipPath: `polygon(
           var(--btn-corner) 0,
           50% 0,
           50% 0,
@@ -31,10 +33,9 @@ module.exports = plugin(
           0% 50%,
           0 var(--btn-corner)
         )`,
-        '-webkit-font-smoothing': 'antialiased',
-        '&:hover, &:focus': {
-          transform: "scale(1.1)",
-          clipPath: `polygon(
+          "-webkit-font-smoothing": "antialiased",
+          "&:hover, &:focus": {
+            clipPath: `polygon(
             calc(50% - var(--btn-chip)) calc(var(--btn-clip-offset) * -1),
             50% var(--btn-chip),
             calc(50% + var(--btn-chip)) calc(var(--btn-clip-offset) * -1),
@@ -52,8 +53,9 @@ module.exports = plugin(
             calc(var(--btn-clip-offset) * -1) calc(50% - var(--btn-chip)),
             calc(var(--btn-clip-offset) * -1) calc(var(--btn-clip-offset) * -1)
           )`,
-        },
-      },
+          },
+        }
+      ),
     };
     addComponents(component);
   }

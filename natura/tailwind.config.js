@@ -41,5 +41,10 @@ module.exports = {
       },
     },
   },
-  plugins: [require("./src/btn"), require("./src/link")],
+  plugins: [
+    require("./src/btn"),
+    require("./src/link"),
+    require("./src/hex"),
+    require("./src/interactive"),
+  ],
 };
