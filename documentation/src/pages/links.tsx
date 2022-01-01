@@ -1,6 +1,14 @@
 import Head from "next/head";
 import Image from "next/image";
-import { COLOR_SCHEMES } from "../constants";
+
+const COLOR_SCHEMES = {
+  PRIMARY: "link-primary",
+  SECONDARY: "link-secondary",
+  BASE: "link-base",
+  WARNING: "link-warning",
+  DANGER: "link-danger",
+  TRANSPARENT: "link-transparent",
+};
 
 export default function Links() {
   return (

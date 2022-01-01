@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
-import "tailwindcss/tailwind.css";
+import "@bjodol/natura/styles.css";
 
 const App = ({ Component, pageProps }) => (
   <>
@@ -13,6 +13,13 @@ const App = ({ Component, pageProps }) => (
       <nav>
         <h2 className="pl-4 pt-4">Components</h2>
         <ul>
+          <li>
+            <Link href="/typography">
+              <a className="link link-primary hover:scale-100 hover:pl-8">
+                Typography
+              </a>
+            </Link>
+          </li>
           <li>
             <Link href="/buttons">
               <a className="link link-primary hover:scale-100 hover:pl-8">

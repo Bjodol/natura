@@ -46,5 +46,6 @@ module.exports = {
     require("./src/link"),
     require("./src/hex"),
     require("./src/interactive"),
+    require("./src/typography"),
   ],
 };

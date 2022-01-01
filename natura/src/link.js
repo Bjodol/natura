@@ -14,7 +14,6 @@ module.exports = plugin(
         transition: "all .12s ease-in-out",
         textDecorationLine: "underline",
         textDecorationThickness: "3px",
-        fontWeight: "bold",
         padding: spacing(2, 4),
         "-webkit-font-smoothing": "antialiased",
         "&:hover, &:focus": {
