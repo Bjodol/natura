@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function Links() {
   const [text, setText] = useState(
-    "We were alone in the forest and began to feel frisky"
+    "We were alone in the forest and began to feel frisky..."
   );
   return (
     <div>
@@ -19,6 +19,7 @@ export default function Links() {
         <input
           type="text"
           value={text}
+          className="control control-primary"
           onChange={({ target: { value } }) => setText(value)}
         />
       </label>

@@ -43,5 +43,6 @@ module.exports = {
     require("./src/interactive"),
     require("./src/typography"),
     require("./src/controls"),
+    require("./src/tile"),
   ],
 };

@@ -12,6 +12,7 @@ module.exports = plugin(
         "--hex-margin": "4px",
         "--hex-form":
           "calc(1.732 * var(--hex-size) + 4 * var(--hex-margin)  - 1px)",
+        "--hex-clip-offset": "0px",
       },
     };
 
@@ -41,6 +42,7 @@ module.exports = plugin(
           marginBottom: "calc(var(--hex-margin) - var(--hex-size)*0.2885)",
         },
       }),
+
       ".hex": merge(colorScheme, setSpacingSizes("--hex-size"), {
         width: "var(--hex-size)",
         height: "calc(var(--hex-size)*1.1547)",

@@ -65,7 +65,6 @@ module.exports = plugin(
           borderWidth: "3px",
           backgroundColor: "transparent",
           borderColor: theme("colors.base.DEFAULT"),
-          // borderRadius: theme("borderRadius.lg"),
           borderRadius: `${theme("borderRadius.lg")} 0 ${theme(
             "borderRadius.lg"
           )} 0`,
