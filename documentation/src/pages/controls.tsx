@@ -33,19 +33,27 @@ export default function Controls() {
       <div className="grid gap-4 sm:grid-cols-4">
         <h2 className="h2 sm:col-span-4">Input with label</h2>
         {Object.values(COLOR_SCHEMES).map((color) => (
-          <label className={color} key={color}>
+          <label key={color}>
             {color}
-            <input placeholder={color} type="text" className="w-full" />
+            <input
+              placeholder={color}
+              type="text"
+              className={`w-full ${color}`}
+            />
           </label>
         ))}
         <h2 className="h2 sm:col-span-4">Input types</h2>
         {Object.values(CONTROL_TYPES).map((color) => (
-          <label className="control control-base" key={color}>
+          <label key={color}>
             {color}
-            <input placeholder={color} type={color} className="w-full" />
+            <input
+              placeholder={color}
+              type={color}
+              className="w-full control control-base"
+            />
           </label>
         ))}
-        <label className={`control control-base w-full`}>
+        <label>
           disabled
           <input
             placeholder="disabled"
@@ -54,20 +62,20 @@ export default function Controls() {
             className={`control control-base w-full`}
           />
         </label>
-        <label className="control control-base">
+        <label>
           select
-          <select className="w-full">
+          <select className="w-full control control-base">
             <option value={0}>select</option>
             <option value={1}>not select</option>
           </select>
         </label>
-        <label className="control control-base sm:col-span-2">
+        <label className="sm:col-span-2">
           textarea
-          <textarea className="w-full" />
+          <textarea className="w-full control control-base" />
         </label>
-        <label className={`control control-base w-full`}>
+        <label className={`flex`}>
           checkbox
-          <input type="checkbox" className="" />
+          <input type="checkbox" className="control-check order-first mr-2" />
         </label>
       </div>
     </div>
