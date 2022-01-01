@@ -13,38 +13,55 @@ module.exports = plugin(
         lineHeight: "1.5rem",
       },
     };
+    /**
+     * fontVariationSettings
+     * ital: 0,1
+     * wdth: 62.5..100
+     * wght: 100..900
+     */
     const component = {
-      ".title, .h1": {
-        fontSize: "3.75rem",
+      ".title": {
+        fontSize: "2.75rem",
         lineHeight: 1,
+        fontVariationSettings: `"wght" 500`,
       },
       ".sub-title": {
-        fontSize: "1.25rem",
+        fontSize: "1.75rem",
         lineHeight: "1.75rem",
         fontWeight: "100",
         fontStyle: "italic",
-        fontVariationSettings: `"wdth" 100`,
+        fontVariationSettings: `"wdth" 90`,
       },
-      ".h2": {
+      ".h1": {
         fontSize: "3rem",
         lineHeight: 1,
+        fontVariationSettings: `"wght" 750`,
+      },
+      ".h2": {
+        fontSize: "2.5rem",
+        lineHeight: 1,
+        fontVariationSettings: `"wght" 600, "wdth" 90`,
       },
       ".h3": {
         fontSize: "1.25rem",
         lineHeight: "1.75rem",
+        fontVariationSettings: `"wght" 500, "wdth" 90`,
       },
       ".h4": {
-        fontSize: "1.25rem",
+        fontSize: "1rem",
         lineHeight: "1.75rem",
+        fontVariationSettings: `"wght" 650, "wdth" 90`,
       },
       ".label": {
         fontSize: "0.875rem",
         lineHeight: "1.25rem",
-        wght: "900",
+        fontVariationSettings: `"wght" 350, "wdth" 90`,
       },
       ".caption": {
         fontSize: "0.875rem",
         lineHeight: "1.25rem",
+        fontStyle: "italic",
+        fontVariationSettings: `"wght" 300, "wdth" 90`,
       },
     };
     addBase(font);

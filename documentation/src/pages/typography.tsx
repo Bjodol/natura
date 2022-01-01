@@ -18,6 +18,7 @@ export default function Links() {
       <label>
         <input
           type="text"
+          value={text}
           onChange={({ target: { value } }) => setText(value)}
         />
       </label>
@@ -27,6 +28,7 @@ export default function Links() {
         <li className="h1">h1 - {text}</li>
         <li className="h2">h2 - {text}</li>
         <li className="h3">h3 - {text}</li>
+        <li className="h4">h4 - {text}</li>
         <li>Normal - {text}</li>
         <li className="caption">caption - {text}</li>
         <li className="label">label - {text}</li>
