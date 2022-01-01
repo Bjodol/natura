@@ -84,15 +84,17 @@ const getSetSpacingSizes = (theme) => (sizeKey) => {
   return sizing;
 };
 
+const focusRing = {
+  boxShadow: `0 0 0 0px var(--interactive-focus-color, blue),
+  0 0 0 calc(3px + 0px) var(--interactive-focus-color, blue), 
+  0 0 var(--interactive-focus-color, blue)`,
+  outline: "none",
+};
+
 const interactive = {
   minHeight: "44px",
   minWidth: "44px",
-  "&:focus-visible": {
-    boxShadow: `0 0 0 0px var(--interactive-focus-color, blue),
-      0 0 0 calc(3px + 0px) var(--interactive-focus-color, blue), 
-      0 0 var(--interactive-focus-color, blue)`,
-    outline: "none",
-  },
+  "&:focus-visible": focusRing,
 };
 
 const animations = {
@@ -111,6 +113,7 @@ const getUtilties = (theme, config) => ({
   setSpacingSizes: getSetSpacingSizes(theme),
   interactive,
   animations,
+  focusRing,
   merge: (...args) => merge({}, ...args),
 });
 

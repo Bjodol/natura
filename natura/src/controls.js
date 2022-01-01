@@ -3,11 +3,27 @@ const getUtilties = require("./utilities");
 
 module.exports = plugin(
   ({ addUtilities, addComponents, e, prefix, config, theme }) => {
-    const { colorScheme, interactive, spacing, merge } = getUtilties(theme, {
+    const {
+      colorScheme: colorSchemeBorder,
+      interactive,
+      spacing,
+      merge,
+      focusRing,
+    } = getUtilties(theme, {
       borderColor: "DEFAULT",
     });
+    const { colorScheme: colorSchemeBefore } = getUtilties(theme);
+    const { colorScheme: colorSchemeAfter } = getUtilties(theme, {
+      backgroundKey: "contrast",
+      colorKey: "DEFAULT",
+      textDecorationColor: "active",
+      borderColor: "DEFAULT",
+      hoverKey: "hover",
+      focusKey: "focus",
+      activeKey: "active",
+    });
     const component = {
-      ".control": merge(interactive, colorScheme, {
+      ".control": merge(interactive, colorSchemeBorder, {
         marginTop: spacing(1),
         borderWidth: "0.25rem",
         padding: spacing(2, 4),
@@ -37,6 +53,7 @@ module.exports = plugin(
       ".control-check": {
         position: "relative",
         appearance: "none",
+        height: "fit-content",
 
         "&::before": {
           content: '""',
@@ -45,12 +62,33 @@ module.exports = plugin(
           width: "24px",
           borderWidth: "2px",
           backgroundColor: "transparent",
-          borderRadius: theme("borderRadius.lg"),
           borderColor: theme("colors.base.DEFAULT"),
+          borderRadius: theme("borderRadius.lg"),
         },
+
+        ...Object.entries(colorSchemeBorder).reduce(
+          (acc, [key, value]) => ({
+            ...acc,
+            [`${key}::before`]: value,
+          }),
+          {}
+        ),
 
         "&:checked::before": {
           backgroundColor: theme("colors.base.DEFAULT"),
+        },
+
+        ...Object.entries(colorSchemeBefore).reduce(
+          (acc, [key, value]) => ({
+            ...acc,
+            [`${key}:checked::before`]: value,
+          }),
+          {}
+        ),
+
+        "&:focus": {
+          outline: "none",
+          "&::before": focusRing,
         },
 
         "&:checked::after": {
@@ -68,8 +106,82 @@ module.exports = plugin(
             90% 30%,
             40% 80%,
             10% 50%
+            )`,
+        },
+
+        ...Object.entries(colorSchemeAfter).reduce(
+          (acc, [key, value]) => ({
+            ...acc,
+            [`${key}:checked::after`]: value,
+          }),
+          {}
+        ),
+      },
+
+      ".control-radio": {
+        position: "relative",
+        appearance: "none",
+
+        "&:focus": {
+          outline: "none",
+          "&::before": focusRing,
+        },
+
+        "&::before": {
+          content: '""',
+          display: "block",
+          height: "24px",
+          width: "24px",
+          borderWidth: "2px",
+          backgroundColor: "transparent",
+          borderRadius: theme("borderRadius.full"),
+          borderColor: theme("colors.base.DEFAULT"),
+        },
+
+        ...Object.entries(colorSchemeBorder).reduce(
+          (acc, [key, value]) => ({
+            ...acc,
+            [`${key}::before`]: value,
+          }),
+          {}
+        ),
+
+        "&:checked::before": {
+          backgroundColor: theme("colors.base.DEFAULT"),
+        },
+
+        ...Object.entries(colorSchemeBefore).reduce(
+          (acc, [key, value]) => ({
+            ...acc,
+            [`${key}:checked::before`]: value,
+          }),
+          {}
+        ),
+
+        "&:checked::after": {
+          content: '""',
+          top: 0,
+          backgroundColor: theme("colors.base.contrast"),
+          display: "block",
+          height: "24px",
+          width: "24px",
+          position: "absolute",
+          clipPath: `polygon(
+            20% 45%,
+            40% 65%,
+            80% 25%,
+            90% 35%,
+            40% 85%,
+            10% 55%
           )`,
         },
+        ...Object.entries(colorSchemeAfter).reduce(
+          (acc, [key, value]) => ({
+            ...acc,
+            [`${key}:checked::after`]: value,
+          }),
+          {}
+        ),
       },
     };
     addComponents(component);

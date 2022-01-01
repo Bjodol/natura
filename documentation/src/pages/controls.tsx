@@ -9,6 +9,22 @@ const COLOR_SCHEMES = {
   TRANSPARENT: "control control-transparent",
 };
 
+const CHECK_BOXES = {
+  PRIMARY: "control-check-primary",
+  SECONDARY: "control-check-secondary",
+  BASE: "control-check-base",
+  WARNING: "control-check-warning",
+  DANGER: "control-check-danger",
+};
+
+const RADIO_BOXES = {
+  PRIMARY: "control-radio-primary",
+  SECONDARY: "control-radio-secondary",
+  BASE: "control-radio-base",
+  WARNING: "control-radio-warning",
+  DANGER: "control-radio-danger",
+};
+
 const CONTROL_TYPES = {
   TEXT: "text",
   NUMBER: "number",
@@ -73,10 +89,40 @@ export default function Controls() {
           textarea
           <textarea className="w-full control control-base" />
         </label>
-        <label className={`flex`}>
-          checkbox
-          <input type="checkbox" className="control-check order-first mr-2" />
+        <label className="flex">
+          control-check
+          <input type="checkbox" className={`control-check order-first mr-2`} />
         </label>
+        {Object.values(CHECK_BOXES).map((color) => (
+          <label key={color} className="flex">
+            {color}
+            <input
+              type="checkbox"
+              className={`control-check ${color} order-first mr-2`}
+            />
+          </label>
+        ))}
+
+        {Object.values(RADIO_BOXES).map((color) => (
+          <div key={color} className="grid gap-2">
+            <label className="flex">
+              {color}
+              <input
+                type="radio"
+                name={color}
+                className={`control-radio ${color} order-first mr-2`}
+              />
+            </label>
+            <label className="flex">
+              {color}
+              <input
+                type="radio"
+                name={color}
+                className={`control-radio ${color} order-first mr-2`}
+              />
+            </label>
+          </div>
+        ))}
       </div>
     </div>
   );
