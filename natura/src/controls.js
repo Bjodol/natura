@@ -8,6 +8,7 @@ module.exports = plugin(
       interactive,
       spacing,
       merge,
+      animations,
       focusRing,
     } = getUtilties(theme, {
       borderColor: "DEFAULT",
@@ -50,7 +51,7 @@ module.exports = plugin(
         },
       }),
 
-      ".control-check": {
+      ".control-check": merge(animations["interaction-scale-up"], {
         position: "relative",
         appearance: "none",
         height: "fit-content",
@@ -60,7 +61,7 @@ module.exports = plugin(
           display: "block",
           height: "24px",
           width: "24px",
-          borderWidth: "2px",
+          borderWidth: "3px",
           backgroundColor: "transparent",
           borderColor: theme("colors.base.DEFAULT"),
           borderRadius: theme("borderRadius.lg"),
@@ -116,9 +117,9 @@ module.exports = plugin(
           }),
           {}
         ),
-      },
+      }),
 
-      ".control-radio": {
+      ".control-radio": merge(animations["interaction-scale-up"], {
         position: "relative",
         appearance: "none",
 
@@ -132,7 +133,7 @@ module.exports = plugin(
           display: "block",
           height: "24px",
           width: "24px",
-          borderWidth: "2px",
+          borderWidth: "3px",
           backgroundColor: "transparent",
           borderRadius: theme("borderRadius.full"),
           borderColor: theme("colors.base.DEFAULT"),
@@ -182,7 +183,7 @@ module.exports = plugin(
           }),
           {}
         ),
-      },
+      }),
     };
     addComponents(component);
   }

@@ -3,13 +3,11 @@ const getUtilties = require("./utilities");
 
 module.exports = plugin(
   ({ addUtilities, addComponents, e, prefix, config, theme }) => {
-    const { colorScheme, interactive, spacing } = getUtilties(theme, {
+    const { colorScheme, interactive, spacing, merge } = getUtilties(theme, {
       textDecorationColor: "DEFAULT",
     });
     const component = {
-      ".link": {
-        ...interactive,
-        ...colorScheme,
+      ".link": merge(interactive, colorScheme, {
         display: "block",
         transition: "all .12s ease-in-out",
         textDecorationLine: "underline",
@@ -24,7 +22,7 @@ module.exports = plugin(
           minHeight: 0,
           minWidth: 0,
         },
-      },
+      }),
     };
     addComponents(component);
   }

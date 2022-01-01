@@ -25,8 +25,8 @@ export default function Links() {
           <a
             href="#top"
             key={color}
-            className={`link link-${color}`}
-          >{`link-${color}`}</a>
+            className={`link ${color}`}
+          >{`${color}`}</a>
         ))}
       </div>
       <div className="flex space-x-4 flex-wrap">
@@ -34,8 +34,8 @@ export default function Links() {
           <a
             href="#top"
             key={color}
-            className={`link link-${color} link-inline`}
-          >{`link-${color}`}</a>
+            className={`link ${color} link-inline`}
+          >{`${color}`}</a>
         ))}
       </div>
     </div>
