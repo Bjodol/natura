@@ -1,14 +1,6 @@
 const plugin = require("tailwindcss/plugin");
 const getUtilties = require("./utilities");
-
-const clipPath = `polygon(
-    calc(0% + var(--hex-clip-offset)) 25%,
-    calc(0% + var(--hex-clip-offset)) 75%,
-    50% calc(100% - var(--hex-clip-offset)),
-    calc(100% - var(--hex-clip-offset)) 75%,
-    calc(100% - var(--hex-clip-offset)) 25%,
-    50% calc(0% + var(--hex-clip-offset))
-    )`;
+const { hex } = require("./shared/clip-paths");
 
 module.exports = plugin(
   ({ addUtilities, addComponents, addBase, e, prefix, config, theme }) => {
@@ -20,7 +12,6 @@ module.exports = plugin(
         "--hex-margin": "4px",
         "--hex-form":
           "calc(1.732 * var(--hex-size) + 4 * var(--hex-margin)  - 1px)",
-        "--hex-clip-offset": "0px",
       },
     };
 
@@ -58,14 +49,14 @@ module.exports = plugin(
         alignItems: "center",
         fontSize: "initial",
         whiteSpace: "nowrap",
-        clipPath,
+        clipPath: hex,
 
         "&.interactive": merge(animations["interaction-scale-up"], {
           "&:focus-visible": {
             "--hex-clip-offset": "calc(var(--hex-size) * -4)",
             zIndex: 10,
             borderRadius: "9999px",
-            clipPath,
+            clipPath: hex,
           },
         }),
       }),

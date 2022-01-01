@@ -28,7 +28,9 @@ module.exports = plugin(
         marginTop: spacing(1),
         borderWidth: "0.25rem",
         padding: spacing(2, 4),
-        borderRadius: theme("borderRadius.lg"),
+        borderRadius: `0 ${theme("borderRadius.lg")} 0 ${theme(
+          "borderRadius.lg"
+        )}`,
         backgroundColor: theme("colors.base.main.DEFAULT"),
         color: theme("colors.base.main.contrast"),
         fontVariationSettings: "normal",
@@ -44,7 +46,6 @@ module.exports = plugin(
           right: "20px",
           height: "20px",
           width: "20px",
-          borderRadius: "10px",
           backgroundColor: theme("colors.base.main.contrast"),
           cursor: "pointer",
           clipPath: `polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%)`,
@@ -64,7 +65,10 @@ module.exports = plugin(
           borderWidth: "3px",
           backgroundColor: "transparent",
           borderColor: theme("colors.base.DEFAULT"),
-          borderRadius: theme("borderRadius.lg"),
+          // borderRadius: theme("borderRadius.lg"),
+          borderRadius: `${theme("borderRadius.lg")} 0 ${theme(
+            "borderRadius.lg"
+          )} 0`,
         },
 
         ...Object.entries(colorSchemeBorder).reduce(
