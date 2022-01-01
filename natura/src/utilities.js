@@ -23,12 +23,14 @@ const getColorScheme = (
     colorKey,
     textDecorationColor,
     hoverKey,
+    borderColor,
     focusKey,
     activeKey,
   } = {
     backgroundKey: "DEFAULT",
     colorKey: "contrast",
     textDecorationColor: "active",
+    borderColor: "DEFAULT",
     hoverKey: "hover",
     focusKey: "focus",
     activeKey: "active",
@@ -52,6 +54,11 @@ const getColorScheme = (
         return {
           ...acc,
           [`&:focus, &:focus-visible`]: getColor(value, "backgroundColor"),
+        };
+      if (key.includes(borderColor))
+        return {
+          ...acc,
+          ...getColor(value, "border-color"),
         };
       if (key.includes(activeKey))
         return { ...acc, [`&:active`]: getColor(value, "backgroundColor") };

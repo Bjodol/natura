@@ -52,10 +52,9 @@ module.exports = plugin(
         lineHeight: "1.75rem",
         fontVariationSettings: `"wght" 650, "wdth" 90`,
       },
-      ".label": {
-        fontSize: "0.875rem",
+      ".label, label": {
         lineHeight: "1.25rem",
-        fontVariationSettings: `"wght" 350, "wdth" 90`,
+        fontVariationSettings: `"wght" 350, "wdth" 95`,
       },
       ".caption": {
         fontSize: "0.875rem",

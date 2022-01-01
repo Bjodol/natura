@@ -35,11 +35,6 @@ module.exports = {
         contrast: "#060609",
       },
     },
-    extend: {
-      spacing: {
-        "fit-content": "fit-content",
-      },
-    },
   },
   plugins: [
     require("./src/btn"),
@@ -47,5 +42,6 @@ module.exports = {
     require("./src/hex"),
     require("./src/interactive"),
     require("./src/typography"),
+    require("./src/controls"),
   ],
 };

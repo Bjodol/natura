@@ -48,6 +48,13 @@ const App = ({ Component, pageProps }) => (
               </a>
             </Link>
           </li>
+          <li>
+            <Link href="/controls">
+              <a className="link link-primary hover:scale-100 hover:pl-8">
+                Controls
+              </a>
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
