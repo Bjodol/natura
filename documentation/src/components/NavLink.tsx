@@ -12,7 +12,6 @@ export const NavLink: React.FC<NavLinkProps & JSX.IntrinsicElements["a"]> = ({
   children,
   ...rest
 }) => {
-  console.log(pathname, href);
   return (
     <Link href={href}>
       <a

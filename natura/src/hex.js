@@ -56,6 +56,10 @@ module.exports = plugin(
         whiteSpace: "nowrap",
         clipPath: hex,
 
+        "&.wrappable": {
+          shapeOutside: hex,
+        },
+
         "&.interactive": merge(animations.interactionScaleUp, {
           "&:focus-visible": {
             "--hex-clip-offset": "calc(var(--hex-size) * -4)",
