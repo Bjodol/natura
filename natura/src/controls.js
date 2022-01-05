@@ -1,28 +1,29 @@
 const plugin = require("tailwindcss/plugin");
-const getUtilties = require("./utilities");
+const { interactive, animations, focusRing } = require("./shared");
+const { getColorScheme, merge, spacingUtils } = require("./utilities");
 
 module.exports = plugin(
   ({ addUtilities, addComponents, e, prefix, config, theme }) => {
-    const {
-      colorScheme: colorSchemeBorder,
-      interactive,
-      spacing,
-      merge,
-      animations,
-      focusRing,
-    } = getUtilties(theme, {
+    const colorSchemeBorder = getColorScheme(theme("colors"), {
       borderColor: "DEFAULT",
     });
-    const { colorScheme: colorSchemeBefore } = getUtilties(theme);
-    const { colorScheme: colorSchemeAfter } = getUtilties(theme, {
-      backgroundKey: "contrast",
-      colorKey: "DEFAULT",
-      textDecorationColor: "active",
-      borderColor: "DEFAULT",
-      hoverKey: "hover",
-      focusKey: "focus",
-      activeKey: "active",
+    const colorSchemeBefore = getColorScheme(theme("colors"), {
+      "background-color": "DEFAULT",
+      color: "contrast",
+      "&:hover, &:focus-visible": "hover",
+      "&:focus": "focus",
+      "&.active": "active",
     });
+    const colorSchemeAfter = getColorScheme(theme("colors"), {
+      "background-color": "contrast",
+      color: "DEFAULT",
+      borderColor: "DEFAULT",
+      "&:hover, &:focus-visible": "hover",
+      "&:focus": "focus",
+      "&.active": "active",
+    });
+    const { spacing } = spacingUtils(theme);
+
     const component = {
       ".control": merge(interactive, colorSchemeBorder, {
         marginTop: spacing(1),
@@ -52,7 +53,7 @@ module.exports = plugin(
         },
       }),
 
-      ".control-check": merge(animations["interaction-scale-up"], {
+      ".control-check": merge(animations.interactionScaleUp, {
         position: "relative",
         appearance: "none",
         height: "fit-content",
@@ -122,7 +123,7 @@ module.exports = plugin(
         ),
       }),
 
-      ".control-radio": merge(animations["interaction-scale-up"], {
+      ".control-radio": merge(animations.interactionScaleUp, {
         position: "relative",
         appearance: "none",
 

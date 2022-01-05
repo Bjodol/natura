@@ -5,6 +5,4 @@ const focusRing = {
   outline: "none",
 };
 
-module.exports = {
-  focusRing,
-};
+module.exports = focusRing;

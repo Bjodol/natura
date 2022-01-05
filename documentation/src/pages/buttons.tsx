@@ -25,7 +25,6 @@ export default function Buttons() {
           </button>
         ))}
       </div>
-
       <footer></footer>
     </div>
   );

@@ -1,5 +1,11 @@
 const config = require("./tailwind.config");
-const getUtilties = require("./src/utilities");
+const getSchemeOld = require("./src/utilities/colors");
 
-const y = getUtilties(() => config.theme.colors);
-console.log(JSON.stringify(y.colorScheme, null, 2));
+const x = getSchemeOld(config.theme.colors, {
+  "background-color": "DEFAULT",
+  color: "contrast",
+  "&:hover, &:focus-visible": "hover",
+  "&:focus": "focus",
+  "&.active": "active",
+});
+console.log(JSON.stringify(x, null, 2));

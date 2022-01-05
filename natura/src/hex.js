@@ -1,11 +1,11 @@
 const plugin = require("tailwindcss/plugin");
-const getUtilties = require("./utilities");
+const { merge, spacingUtils, getColorScheme } = require("./utilities");
 const { hex } = require("./shared/clip-paths");
+const { animations } = require("./shared");
+const colorVariants = require("./shared/color-variants");
 
 module.exports = plugin(
   ({ addUtilities, addComponents, addBase, e, prefix, config, theme }) => {
-    const { spacing, colorScheme, animations, merge, setSpacingSizes } =
-      getUtilties(theme);
     const variables = {
       ":root": {
         "--hex-size": "104px",
@@ -15,6 +15,9 @@ module.exports = plugin(
         "--hex-clip-offset": "0px",
       },
     };
+
+    const { setSpacingSizes } = spacingUtils(theme);
+    const { contained } = colorVariants(theme);
 
     const component = {
       ".hex-container": {
@@ -43,7 +46,7 @@ module.exports = plugin(
         },
       }),
 
-      ".hex": merge(colorScheme, setSpacingSizes("--hex-size"), {
+      ".hex": merge(contained, setSpacingSizes("--hex-size"), {
         width: "var(--hex-size)",
         height: "calc(var(--hex-size)*1.1547)",
         display: "flex",
@@ -53,7 +56,7 @@ module.exports = plugin(
         whiteSpace: "nowrap",
         clipPath: hex,
 
-        "&.interactive": merge(animations["interaction-scale-up"], {
+        "&.interactive": merge(animations.interactionScaleUp, {
           "&:focus-visible": {
             "--hex-clip-offset": "calc(var(--hex-size) * -4)",
             zIndex: 10,

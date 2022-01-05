@@ -1,11 +1,7 @@
 const plugin = require("tailwindcss/plugin");
-const getUtilties = require("./utilities");
 
 module.exports = plugin(
   ({ addUtilities, addComponents, addBase, e, prefix, config, theme }) => {
-    const { colorScheme, interactive, spacing } = getUtilties(theme, {
-      textDecorationColor: "DEFAULT",
-    });
     const font = {
       html: {
         fontFamily: "'Noto Sans Display', sans-serif",

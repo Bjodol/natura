@@ -1,29 +1,25 @@
 const plugin = require("tailwindcss/plugin");
-const { focusRing } = require("./shared/focus");
-const getUtilties = require("./utilities");
+const { interactive, animations, focusRing } = require("./shared");
+const { spacingUtils, getColorScheme } = require("./utilities");
+const merge = require("./utilities/merge");
 
 module.exports = plugin(
   ({ addUtilities, addComponents, e, prefix, config, theme }) => {
-    const { colorScheme, interactive, spacing, merge, animations } =
-      getUtilties(theme, {
-        textDecorationColor: "DEFAULT",
-      });
+    const { spacing } = spacingUtils(theme);
+    const colorScheme = getColorScheme(theme("colors"), {
+      "text-decoration-color": "DEFAULT",
+    });
     const linkBase = merge(colorScheme, {
       textDecorationLine: "underline",
       textDecorationThickness: "3px",
     });
 
     const component = {
-      ".link": merge(
-        linkBase,
-        interactive,
-        animations["interaction-scale-up"],
-        {
-          display: "block",
-          padding: spacing(2, 4),
-        }
-      ),
-      ".link-inline": merge(linkBase, animations["interaction-scale-up"], {
+      ".link": merge(linkBase, interactive, animations.interactionScaleUp, {
+        display: "block",
+        padding: spacing(2, 4),
+      }),
+      ".link-inline": merge(linkBase, animations.interactionScaleUp, {
         "&:focus-visible": focusRing,
       }),
       ".link-nav": merge(linkBase, interactive, {
