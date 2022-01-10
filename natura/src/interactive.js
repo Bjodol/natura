@@ -1,5 +1,7 @@
 const plugin = require("tailwindcss/plugin");
-const interactive = require("./shared/interactive");
+const colorVariants = require("./shared/color-variants");
+const { interactive } = require("./shared/interactive");
+const { merge, getColorScheme } = require("./utilities");
 
 module.exports = plugin(
   ({ addUtilities, addComponents, addBase, e, prefix, config, theme }) => {
@@ -9,8 +11,21 @@ module.exports = plugin(
         "--interactive-focus-color": "blue",
       },
     };
+    const colors = colorVariants(theme);
+    const focusVariants = getColorScheme(
+      theme("colors"),
+      {
+        "--interactive-focus-color": "DEFAULT",
+      },
+      "&."
+    );
     const component = {
-      ".interactive": interactive,
+      ".interactive": merge(
+        colors.interactive,
+        interactive,
+        focusVariants,
+        colors.outlined
+      ),
     };
     addBase(variables);
     addComponents(component);

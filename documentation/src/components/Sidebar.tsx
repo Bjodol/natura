@@ -12,26 +12,30 @@ export const Sidebar: React.FC = () => {
     <>
       <header
         className={classNames(
-          "fixed text-base-main-contrast w-[288px] top-0 h-full bg-secondary-active border-base-hover border-r-2 shadow-secondary-hover transition-all order-first",
-          { "-translate-x-full": pathname === "/" || !expanded }
+          "fixed text-base-main-contrast overflow-y-auto w-full sm:w-[288px] top-0 h-full transition-all order-first sm:translate-x-0 z-40 bg-base-contrast sm:bg-transparent",
+          { "-translate-x-full": !expanded, hidden: pathname === "/" }
         )}
       >
         <Link href="/">
-          <a className="title p-4 block decoration-primary underline underline-offset-4 transition-all">
+          <a className="title leaf w-[fit-content] secondary p-4 flex items-center hover:primary decoration-secondary hover:underline transition-all">
             Natura
           </a>
         </Link>
-        <nav>
+        <nav className="p-4">
           {routes.map(({ elements, title }) => (
             <Fragment key={title}>
-              <h2 className="pl-4 pt-8 label">{title}</h2>
+              <h2 className="px-3 mt-8 p-2 label leaf leaf-right outlined primary w-fit h-fit">
+                {title}
+              </h2>
               <ul>
                 {elements.map((href) => (
                   <li key={href}>
                     <NavLink
                       href={href}
-                      className="link-nav link-nav-primary capitalize"
-                      onClick={() => setExpanded(false)}
+                      className="block leaf interactive secondary capitalize p-4 mt-4"
+                      onClick={() => {
+                        setExpanded(false);
+                      }}
                       pathname={pathname}
                     >
                       {href.split("/").join(" ").trim()}
@@ -46,7 +50,7 @@ export const Sidebar: React.FC = () => {
       <button
         onClick={() => setExpanded(!expanded)}
         className={classNames(
-          "hex hex-16 hex-primary transition-all sm:hidden transform fixed bottom-0 right-0",
+          "hex hex-16 primary transition-all sm:hidden transform fixed bottom-0 right-0",
           {
             "rotate-90": expanded,
             hidden: pathname === "/",

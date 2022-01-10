@@ -1,20 +1,13 @@
 import Head from "next/head";
 import { variantsColor } from "../variants";
 
-const COMPONENTS = [
-  "btn",
-  "btn outlined",
-  "btn hex",
-  "btn tile",
-  "btn leaf",
-  "btn leaf leaf-right outlined",
-];
+const COMPONENTS = ["", "interactive", "outlined"];
 
-export default function Buttons() {
+export default function Colors() {
   return (
     <div>
       <Head>
-        <title>Buttons - Natura design system</title>
+        <title>Colors - Natura design system</title>
 
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -27,12 +20,12 @@ export default function Buttons() {
           <div className="grid gap-4" key={variant}>
             <code className="text-center">{"`" + variant + "`"}</code>
             {variantsColor.map((color) => (
-              <button
+              <div
                 key={color}
-                className={`${variant} ${color} flex items-center justify-center w-full`}
+                className={`${variant} ${color} leaf flex items-center justify-center h-16`}
               >
                 {color}
-              </button>
+              </div>
             ))}
           </div>
         ))}

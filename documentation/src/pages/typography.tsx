@@ -10,16 +10,16 @@ export default function Links() {
     <div>
       <Head>
         <title>Links - Natura design system</title>
-        
+
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <h1>Typography</h1>
       <label>
-        <input
-          type="text"
+        <textarea
           value={text}
-          className="control control-primary"
+          className="control w-full"
+          rows={3}
           onChange={({ target: { value } }) => setText(value)}
         />
       </label>

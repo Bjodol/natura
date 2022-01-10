@@ -15,7 +15,7 @@ const getSetSpacingSizes = (theme) => (sizeKey) => {
         [sizeKey]: val,
       },
     }),
-    {}
+    { [`&-fit-content`]: { [sizeKey]: "fit-content" } }
   );
   return sizing;
 };

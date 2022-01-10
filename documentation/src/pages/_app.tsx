@@ -5,11 +5,11 @@ import { Sidebar } from "../components/Sidebar";
 export const routes = [
   {
     title: "Style",
-    elements: ["/typography"],
+    elements: ["/typography", "/colors"],
   },
   {
     title: "Components",
-    elements: ["/buttons", "/links", "/hex", "/tiles", "/controls"],
+    elements: ["/buttons", "/links", "/controls", "/shapes"],
   },
   {
     title: "Layouts",
@@ -25,10 +25,10 @@ const App = ({ Component, pageProps }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="grid">
+        <Sidebar />
         <main className="sm:ml-[288px] p-12">
           <Component {...pageProps} />
         </main>
-        <Sidebar />
       </div>
     </>
   );

@@ -1,12 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { Fragment } from "react";
-import { HEX_COLOR_SCHEMES } from "./hex-grid";
+import { variantsColor } from "../variants";
 import { routes } from "./_app";
 
-const HEX_COLORS = Object.values(HEX_COLOR_SCHEMES);
 const ROUTES = routes.reduce((acc, { elements }) => [...acc, ...elements], []);
+
+const COLORS = variantsColor.filter((color) => color !== "transparent");
 
 export default function Home() {
   return (
@@ -28,12 +28,10 @@ export default function Home() {
             />
           </div>
           <div className="space-y-4">
-            <h1 className="title">
-              Natura
-              <span className="sub-title text-right pl-4">
-                - A system inspired by the raw nature of the moutain side
-              </span>
-            </h1>
+            <h1 className="title text-center sm:text-left">Natura</h1>
+            <h2 className="sub-title inline text-center sm:text-right pl-4">
+              - A system inspired by the raw nature of the moutain side
+            </h2>
 
             <p className="">
               {"Built on plugins for "}
@@ -57,8 +55,8 @@ export default function Home() {
             {ROUTES.map((href, index) => (
               <Link key={href} href={href}>
                 <a
-                  className={`hex capitalize ${
-                    HEX_COLORS[index % HEX_COLORS.length]
+                  className={`hex capitalize flex items-center justify-center ${
+                    COLORS[index % COLORS.length]
                   }`}
                 >
                   {href.split("/").join(" ").trim()}

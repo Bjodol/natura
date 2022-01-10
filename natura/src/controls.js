@@ -1,31 +1,45 @@
 const plugin = require("tailwindcss/plugin");
-const { interactive, animations, focusRing } = require("./shared");
+const { interactionScaleUp } = require("./shared/animations");
+const { interactive, focusOutline } = require("./shared/interactive");
 const { getColorScheme, merge, spacingUtils } = require("./utilities");
 
 module.exports = plugin(
   ({ addUtilities, addComponents, e, prefix, config, theme }) => {
-    const colorSchemeBorder = getColorScheme(theme("colors"), {
-      borderColor: "DEFAULT",
-    });
-    const colorSchemeBefore = getColorScheme(theme("colors"), {
-      "background-color": "DEFAULT",
-      color: "contrast",
-      "&:hover, &:focus-visible": "hover",
-      "&:focus": "focus",
-      "&.active": "active",
-    });
-    const colorSchemeAfter = getColorScheme(theme("colors"), {
-      "background-color": "contrast",
-      color: "DEFAULT",
-      borderColor: "DEFAULT",
-      "&:hover, &:focus-visible": "hover",
-      "&:focus": "focus",
-      "&.active": "active",
-    });
+    const colorSchemeBorder = getColorScheme(
+      theme("colors"),
+      {
+        borderColor: "DEFAULT",
+      },
+      "&."
+    );
+    const colorSchemeBefore = getColorScheme(
+      theme("colors"),
+      {
+        "background-color": "DEFAULT",
+        color: "contrast",
+        "&:hover, &:focus-visible": "hover",
+        "&:focus": "focus",
+        "&.active": "active",
+      },
+      "&."
+    );
+    const colorSchemeAfter = getColorScheme(
+      theme("colors"),
+      {
+        "background-color": "contrast",
+        color: "DEFAULT",
+        borderColor: "DEFAULT",
+        "&:hover, &:focus-visible": "hover",
+        "&:focus": "focus",
+        "&.active": "active",
+      },
+      "&."
+    );
     const { spacing } = spacingUtils(theme);
 
     const component = {
       ".control": merge(interactive, colorSchemeBorder, {
+        borderColor: theme("colors.base.DEFAULT"),
         marginTop: spacing(1),
         borderWidth: "0.25rem",
         padding: spacing(2, 4),
@@ -53,7 +67,7 @@ module.exports = plugin(
         },
       }),
 
-      ".control-check": merge(animations.interactionScaleUp, {
+      ".control-check": merge(interactionScaleUp, {
         position: "relative",
         appearance: "none",
         height: "fit-content",
@@ -93,7 +107,7 @@ module.exports = plugin(
 
         "&:focus": {
           outline: "none",
-          "&::before": focusRing,
+          "&::before": focusOutline,
         },
 
         "&:checked::after": {
@@ -123,13 +137,13 @@ module.exports = plugin(
         ),
       }),
 
-      ".control-radio": merge(animations.interactionScaleUp, {
+      ".control-radio": merge(interactionScaleUp, {
         position: "relative",
         appearance: "none",
 
         "&:focus": {
           outline: "none",
-          "&::before": focusRing,
+          "&::before": focusOutline,
         },
 
         "&::before": {

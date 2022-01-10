@@ -18,7 +18,7 @@ module.exports = plugin(
     const component = {
       ".title": {
         fontSize: "2.75rem",
-        lineHeight: 1,
+        lineHeight: 1.5,
         fontVariationSettings: `"wght" 500`,
       },
       ".sub-title": {
@@ -30,12 +30,12 @@ module.exports = plugin(
       },
       ".h1": {
         fontSize: "3rem",
-        lineHeight: 1,
+        lineHeight: 1.5,
         fontVariationSettings: `"wght" 750`,
       },
       ".h2": {
         fontSize: "2.5rem",
-        lineHeight: 1,
+        lineHeight: 1.5,
         fontVariationSettings: `"wght" 600, "wdth" 90`,
       },
       ".h3": {

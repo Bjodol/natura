@@ -10,7 +10,7 @@ module.exports = {
       current: { DEFAULT: "currentColor" },
       primary: {
         DEFAULT: "#919481",
-        hover: { DEFAULT: "#48432e", contrast: "#cdd4dc" },
+        hover: { DEFAULT: "#6B6E5B", contrast: "#cdd4dc" },
         contrast: "#060609",
       },
       secondary: {
@@ -28,10 +28,12 @@ module.exports = {
       },
       danger: {
         DEFAULT: "#523733",
+        hover: "#4A251F",
         contrast: "#cdd4dc",
       },
       warning: {
         DEFAULT: "#b89a5e",
+        hover: { DEFAULT: "#77591D", contrast: "#cdd4dc" },
         contrast: "#060609",
       },
     },
@@ -39,10 +41,11 @@ module.exports = {
   plugins: [
     require("./src/btn"),
     require("./src/link"),
-    require("./src/hex"),
     require("./src/interactive"),
     require("./src/typography"),
     require("./src/controls"),
-    require("./src/tile"),
+    require("./src/layouts"),
+    require("./src/shapes"),
+    require("./src/colors"),
   ],
 };
