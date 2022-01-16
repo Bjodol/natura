@@ -8,6 +8,9 @@
     "src/**/*.js",
     "tailwind.config.js"
   ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\""
+  },
   "repository": "git@github.com:Bjodol/natura.git",
   "author": "bjodol <bjorndolvik@gmail.com>",
   "license": "MIT",

@@ -1,11 +1,10 @@
-const config = require("./tailwind.config");
-const getSchemeOld = require("./src/utilities/colors");
-
-const x = getSchemeOld(config.theme.colors, {
-  "background-color": "DEFAULT",
-  color: "contrast",
-  "&:hover, &:focus-visible": "hover",
-  "&:focus": "focus",
-  "&.active": "active",
-});
-console.log(JSON.stringify(x, null, 2));
+module.exports = {
+  btn: require("./src/btn"),
+  colors: require("./src/colors"),
+  controls: require("./src/controls"),
+  interactive: require("./src/interactive"),
+  layouts: require("./src/layouts"),
+  link: require("./src/link"),
+  shapes: require("./src/shapes"),
+  typography: require("./src/typography"),
+};
