@@ -1,68 +1,67 @@
-import Head from "next/head";
+import classNames from "classnames";
 import Image from "next/image";
-import { variantsColor } from "../variants";
+import { Story, StoryColorColumn, StoryColumn } from "../components/Story";
 
 const COMPONENTS = [
   "tile",
   "hex",
+  "square",
   "leaf",
   "leaf leaf-right outlined",
-  "square",
 ];
 
 export default function Shapes() {
   return (
     <div>
-      <Head>
-        <title>Shapes - Natura design system</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <h1 className="h1">Shapes</h1>
-      <div className="grid gap-4 sm:grid-cols-5 p-4 mt-4">
-        <h2 className="h2 col-span-full">Static shapes</h2>
-        <code className="col-span-full">
-          {"`${variant} ${color} flex items-center justify-center`"}
-        </code>
-        {COMPONENTS.map((variant) => (
-          <div className="grid gap-4" key={variant}>
-            {variantsColor.map((color) => (
-              <div
-                key={color}
-                className={`${variant} ${color} flex items-center justify-center`}
-              >
-                {color}
-              </div>
-            ))}
-          </div>
-        ))}
+      <Story
+        title="Shapes"
+        variants={[
+          ...COMPONENTS,
+          ...COMPONENTS.map((variant) => `${variant} interactive`),
+          ...COMPONENTS.map((variant) => `${variant} object-cover`),
+        ]}
+        className="flex items-center justify-center"
+        columns="sm:grid-cols-5"
+      >
+        <StoryColorColumn
+          filterVariants={(variant) =>
+            !variant.includes("interactive") &&
+            !variant.includes("object-cover")
+          }
+        >
+          {({ color, className, variant, ...props }) => (
+            <div {...props} className={classNames("text-center", className)}>
+              {variant}
+            </div>
+          )}
+        </StoryColorColumn>
         <h2 className="h2 col-span-full">Interactive shapes</h2>
-        <code className="col-span-full">
-          {"`${variant} ${color} interactive`"}
-        </code>
-        {COMPONENTS.map((variant) => (
-          <div className="grid gap-4" key={variant}>
-            {variantsColor.map((color) => (
-              <button key={color} className={`${variant} ${color} interactive`}>
-                {color}
-              </button>
-            ))}
-          </div>
-        ))}
+        <StoryColorColumn
+          filterVariants={(variant) => variant.includes("interactive")}
+        >
+          {({ color, className, variant, ...props }) => (
+            <div {...props} className={classNames("text-center", className)}>
+              {variant}
+            </div>
+          )}
+        </StoryColorColumn>
         <h2 className="h2 col-span-full">Image shapes</h2>
-        <code className="col-span-full">{"`${variant} object-cover`"}</code>
-        {COMPONENTS.map((variant) => (
-          <div className={`${variant} object-cover relative`} key={variant}>
-            <Image
-              alt={`${variant} image shape`}
-              className={variant}
-              src="/MountainRiver.jpg"
-              layout="fill"
-              objectFit="cover"
-            />
-          </div>
-        ))}
-      </div>
-      <footer></footer>
+        <StoryColumn
+          filterVariants={(variant) => variant.includes("object-cover")}
+        >
+          {({ color, variant, ...props }) => (
+            <div className={`${variant} object-cover relative`} key={variant}>
+              <Image
+                alt={`${variant} image shape`}
+                {...props}
+                src="/MountainRiver.jpg"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+          )}
+        </StoryColumn>
+      </Story>
     </div>
   );
 }
