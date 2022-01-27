@@ -1,8 +1,3 @@
-import Head from "next/head";
-import { useState } from "react";
-import { variantsColor } from "../variants";
-import { Code } from "../components/Code";
-import { copyClipboard } from "../utils";
 import { StoryColorColumn, Story } from "../components/Story";
 
 const COMPONENTS = [

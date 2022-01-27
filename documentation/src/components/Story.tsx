@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import Head from "next/head";
+import Link from "next/link";
 import { createContext, PropsWithChildren, ReactNode, useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -58,6 +59,9 @@ export const Story: FC<StoryProps & Omit<StoryContext, "onClick">> = ({
       </Head>
       <h1 className="h1">{title}</h1>
       {description && <p>{description}</p>}
+      <Link href={`/playgrounds/${title.toLowerCase()}`}>
+        <a className="link w-fit primary">Playground</a>
+      </Link>
       <div className={classNames("grid gap-4 p-4 mt-4 sm:gap-y-12", columns)}>
         <Code
           className="col-span-full"
