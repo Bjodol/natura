@@ -24,7 +24,7 @@ export const Code: FC<
     >
       <span>{children}</span>
       <button onClick={copy}>
-        <FontAwesomeIcon icon={faCopy} className="w-4 h-4" />
+        <FontAwesomeIcon icon={faCopy} className="w-4 h-4 ml-4" />
       </button>
     </code>
   );

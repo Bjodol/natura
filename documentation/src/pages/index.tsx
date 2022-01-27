@@ -1,12 +1,25 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { Code } from "../components/Code";
+import { MonacoEditor } from "../components/Playground";
 import { variantsColor } from "../variants";
 import { routes } from "./_app";
 
 const ROUTES = routes.reduce((acc, { elements }) => [...acc, ...elements], []);
 
 const COLORS = variantsColor.filter((color) => color !== "transparent");
+const INSTALLATION = `// tailwind.config.js
+plugins: [
+  require("@bjodol/natura/btn"),
+  require("@bjodol/natura/link"),
+  require("@bjodol/natura/interactive"),
+  require("@bjodol/natura/typography"),
+  require("@bjodol/natura/controls"),
+  require("@bjodol/natura/layouts"),
+  require("@bjodol/natura/shapes"),
+  require("@bjodol/natura/colors"),
+]`;
 
 export default function Home() {
   return (
@@ -32,7 +45,6 @@ export default function Home() {
             <h2 className="sub-title inline text-center sm:text-right pl-4">
               - A system inspired by the raw nature of the moutain side
             </h2>
-
             <p className="">
               {"Built on plugins for "}
               <a
@@ -45,6 +57,48 @@ export default function Home() {
                 " Natura design system delivers powerful components with the ability to easily change and configure as you'd like."
               }
             </p>
+            <h3 className="h3">Installation</h3>
+            <ol className="space-y-4">
+              <li>
+                1. First of all, you need to install{" "}
+                <a
+                  className="link-inline secondary"
+                  href="https://tailwindcss.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  TailwindCSS
+                </a>{" "}
+                using their{" "}
+                <a
+                  className="link-inline primary"
+                  href="https://tailwindcss.com/docs/installation"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Installation guide
+                </a>
+              </li>
+              <li>
+                2. Install the package using npm or yarn:
+                <Code onCopy={() => {}} className="w-fit">
+                  yarn add --dev @bjodol/natura
+                </Code>
+              </li>
+              <li className="grid gap-2">
+                <div>
+                  3. Add the features you want to use using the plugins:
+                </div>
+                <MonacoEditor
+                  height={12 * 19 + 5}
+                  width="100%"
+                  language="javascript"
+                  theme="vs-dark"
+                  value={INSTALLATION}
+                  options={{ minimap: { enabled: false }, readOnly: true }}
+                />
+              </li>
+            </ol>
           </div>
         </div>
         <h2 className="h2 my-4" id="features">

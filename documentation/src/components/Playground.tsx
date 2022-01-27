@@ -1,14 +1,14 @@
 import dynamic from "next/dynamic";
 import { FC, useState } from "react";
 
-const MonacoEditor = dynamic(() => import("@monaco-editor/react"), {
+export const MonacoEditor = dynamic(() => import("@monaco-editor/react"), {
   ssr: false,
 });
 
 export const Playground: FC<{ initialValue: string }> = ({ initialValue }) => {
   const [value, setValue] = useState(initialValue);
   return (
-    <div className="grid gap-4 grid-cols-2 h-96">
+    <div className="grid gap-4 sm:grid-cols-2 sm:h-96">
       <MonacoEditor
         value={value}
         onChange={setValue}
