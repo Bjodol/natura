@@ -48,7 +48,7 @@ export default function Home() {
             <p className="">
               {"Built on plugins for "}
               <a
-                className="link-inline link-warning"
+                className="link-inline warning"
                 href="https://tailwindcss.com/"
               >
                 tailwindcss
