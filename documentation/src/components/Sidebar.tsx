@@ -38,7 +38,7 @@ export const Sidebar: React.FC = () => {
                       }}
                       pathname={pathname}
                     >
-                      {href.split("/").join(" ").trim()}
+                      {href.replace("-", " ").split("/").join(" ").trim()}
                     </NavLink>
                   </li>
                 ))}

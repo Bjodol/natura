@@ -5,7 +5,7 @@ import { Sidebar } from "../components/Sidebar";
 export const routes = [
   {
     title: "Style",
-    elements: ["/typography", "/colors"],
+    elements: ["/typography", "/color-schemes"],
   },
   {
     title: "Components",

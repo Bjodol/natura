@@ -10,16 +10,25 @@ const ROUTES = routes.reduce((acc, { elements }) => [...acc, ...elements], []);
 
 const COLORS = variantsColor.filter((color) => color !== "transparent");
 const INSTALLATION = `// tailwind.config.js
-plugins: [
-  require("@bjodol/natura/btn"),
-  require("@bjodol/natura/link"),
-  require("@bjodol/natura/interactive"),
-  require("@bjodol/natura/typography"),
-  require("@bjodol/natura/controls"),
-  require("@bjodol/natura/layouts"),
-  require("@bjodol/natura/shapes"),
-  require("@bjodol/natura/colors"),
-]`;
+{
+  plugins: [
+    require("@bjodol/natura/plugins/btn"),
+    require("@bjodol/natura/plugins/link"),
+    require("@bjodol/natura/plugins/interactive"),
+    require("@bjodol/natura/plugins/typography"),
+    require("@bjodol/natura/plugins/controls"),
+    require("@bjodol/natura/plugins/layouts"),
+    require("@bjodol/natura/plugins/shapes"),
+    require("@bjodol/natura/plugins/color-schemes"),
+  ]
+}`.trim();
+const INSTALLATION_PRESET = `// tailwind.config.js
+{
+  presets: [
+    require("@bjodol/natura/tailwind.config.js")
+  ]
+}
+  `.trim();
 
 export default function Home() {
   return (
@@ -86,11 +95,22 @@ export default function Home() {
                 </Code>
               </li>
               <li className="grid gap-2">
+                <div>3. Add the the system using the defined preset.</div>
+                <MonacoEditor
+                  height={8 * 19 + 5}
+                  width="100%"
+                  language="javascript"
+                  theme="vs-dark"
+                  value={INSTALLATION_PRESET}
+                  options={{ minimap: { enabled: false }, readOnly: true }}
+                />
+              </li>
+              <li className="grid gap-2">
                 <div>
-                  3. Add the features you want to use using the plugins:
+                  Or add the features you want to use using the plugins:
                 </div>
                 <MonacoEditor
-                  height={12 * 19 + 5}
+                  height={15 * 19 + 5}
                   width="100%"
                   language="javascript"
                   theme="vs-dark"
@@ -109,11 +129,13 @@ export default function Home() {
             {ROUTES.map((href, index) => (
               <Link key={href} href={href}>
                 <a
-                  className={`hex capitalize flex items-center justify-center ${
+                  className={`hex capitalize flex justify-center items-center interactive relative ${
                     COLORS[index % COLORS.length]
                   }`}
                 >
-                  {href.split("/").join(" ").trim()}
+                  <span className="text-center absolute">
+                    {href.replace("-", " ").split("/").join(" ").trim()}
+                  </span>
                 </a>
               </Link>
             ))}
