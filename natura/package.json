@@ -1,6 +1,6 @@
 {
   "name": "@bjodol/natura",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Natura design system",
   "main": "index.js",
   "module": "index.js",
