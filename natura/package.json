@@ -16,8 +16,10 @@
   "repository": "git@github.com:Bjodol/natura.git",
   "author": "bjodol <bjorndolvik@gmail.com>",
   "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
   "devDependencies": {
-    "lodash": "^4.17.21",
     "tailwindcss": "^3.0.7"
   }
 }
