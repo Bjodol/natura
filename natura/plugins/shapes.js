@@ -1,8 +1,8 @@
 const plugin = require("tailwindcss/plugin");
-const { transition } = require("./shared/animations");
-const { hex, tile } = require("./shared/clip-paths");
-const colorVariants = require("./shared/color-variants");
-const { spacingUtils, merge } = require("./utilities");
+const { transition } = require("../shared/animations");
+const { hex, tile } = require("../shared/clip-paths");
+const colorVariants = require("../shared/color-variants");
+const { spacingUtils, merge } = require("../utilities");
 
 module.exports = plugin(
   ({ addUtilities, addComponents, addBase, e, prefix, config, theme }) => {

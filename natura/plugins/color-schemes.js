@@ -1,5 +1,5 @@
 const plugin = require("tailwindcss/plugin");
-const colorVariants = require("./shared/color-variants");
+const colorVariants = require("../shared/color-variants");
 
 module.exports = plugin(
   ({ addUtilities, addComponents, addBase, e, prefix, config, theme }) => {

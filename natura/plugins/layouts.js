@@ -1,6 +1,6 @@
 const plugin = require("tailwindcss/plugin");
-const { merge, spacingUtils } = require("./utilities");
-const colorVariants = require("./shared/color-variants");
+const { merge, spacingUtils } = require("../utilities");
+const colorVariants = require("../shared/color-variants");
 
 module.exports = plugin(
   ({ addUtilities, addComponents, addBase, e, prefix, config, theme }) => {

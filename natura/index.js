@@ -1,10 +1,10 @@
 module.exports = {
-  btn: require("./src/btn"),
-  colors: require("./src/colors"),
-  controls: require("./src/controls"),
-  interactive: require("./src/interactive"),
-  layouts: require("./src/layouts"),
-  link: require("./src/link"),
-  shapes: require("./src/shapes"),
-  typography: require("./src/typography"),
+  btn: require("./plugins/btn"),
+  colorSchemes: require("./plugins/color-schemes"),
+  controls: require("./plugins/controls"),
+  interactive: require("./plugins/interactive"),
+  layouts: require("./plugins/layouts"),
+  link: require("./plugins/link"),
+  shapes: require("./plugins/shapes"),
+  typography: require("./plugins/typography"),
 };

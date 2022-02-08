@@ -5,7 +5,9 @@
   "main": "index.js",
   "module": "index.js",
   "files": [
-    "src/**/*.js",
+    "plugins/**/*.js",
+    "shared/**/*.js",
+    "utilities/**/*.js",
     "tailwind.config.js"
   ],
   "scripts": {

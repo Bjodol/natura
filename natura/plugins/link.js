@@ -1,8 +1,8 @@
 const plugin = require("tailwindcss/plugin");
-const { interactionScaleUp } = require("./shared/animations");
-const { focusOutline, interactive } = require("./shared/interactive");
-const { spacingUtils } = require("./utilities");
-const merge = require("./utilities/merge");
+const { interactionScaleUp } = require("../shared/animations");
+const { focusOutline, interactive } = require("../shared/interactive");
+const { spacingUtils } = require("../utilities");
+const merge = require("../utilities/merge");
 
 module.exports = plugin(
   ({ addUtilities, addComponents, e, prefix, config, theme }) => {
